@@ -1,23 +1,26 @@
-"use client"
-const { useState, useEffect } = require("react")
+import { useState } from "react";
+import ScriptsBlock from "../hook/useTelegram";
 
-const Window = (props) => {
-    const [set, setSet] = useState("Проверка");
-    const [tg, setTg] = useState({});
-
+export default Tele = () => {
+    const [tg, setTg] = useState()
     useEffect(() => {
-        if(typeof window !== undefined) {
-            setSet("ready");
-            setTg(window?.Telegram?.WebApp);
-
+        console.log('useTelegram')
+        function initTg() {
+        if (typeof window !== 'undefined' && window.Telegram && window.Telegram.WebApp) {
+        console.log('Telegram WebApp is set');
+        const tgData = window.Telegram.WebApp
+        setTg(tgData);
         } else {
-            setSet("not ready");
+        console.log('Telegram WebApp is undefined, retrying…');
+        setTimeout(initTg, 500);
         }
-    }, [tg])
-
-    return (<>
-        <h1>{set} {tg.initDataUnsafe?.user.username}</h1>
-    </>)
+        }
+        initTg();
+      }, []);
+    return (
+        <>
+        <ScriptsBlock />
+            {tg.initDataUnsafe?.user.username}
+        </>
+    )
 }
-
-export default Window;
