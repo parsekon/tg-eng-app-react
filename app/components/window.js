@@ -33,6 +33,7 @@ const Tele = () => {
       <ScriptsBlock />
       <button onClick={closeBot}>close</button>
       <h1>ГОТОВО</h1>
+      <h2>User: {tg.initDataUnsafe?.user.username}</h2>
     </>
   );
 };
