@@ -13,7 +13,7 @@ const Window = (props) => {
         } else {
             setSet("not ready");
         }
-    }, [])
+    }, [tg])
 
     return (<>
         <h1>{set} {tg.initDataUnsafe?.user.username}</h1>
