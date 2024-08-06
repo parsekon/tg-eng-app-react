@@ -1,13 +1,13 @@
 
 "use client"
 
-import Window from "../components/window"
+import Tele from "../components/window"
 
 const New = () => {
 
     return (
         <>
-            <Window />
+            <Tele />
         </>
     )
 }
