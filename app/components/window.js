@@ -27,7 +27,7 @@ const Tele = () => {
   return (
     <>
       <ScriptsBlock />
-      <h1>{user}</h1>
+      <h1>ГОТОВО</h1>
     </>
   );
 };
