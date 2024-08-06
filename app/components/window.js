@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ScriptsBlock from "../hook/useTelegram";
 
 const Tele = () => {
-  const [user, setUser] = useState();
+  const [tg, setTg] = useState();
   useEffect(() => {
     console.log("useTelegram");
     function initTg() {
@@ -15,18 +15,23 @@ const Tele = () => {
         console.log("Telegram WebApp is set");
         const tgData = window.Telegram.WebApp;
         console.log(tgData);
-        setUser(tgData.initDataUnsafe?.user?.username);
+        setTg(tgData);
       } else {
         console.log("Telegram WebApp is undefined, retrying…");
         setTimeout(initTg, 500);
       }
     }
     initTg();
-    console.log(user);
+    console.log("user>>>", typeof user);
   }, []);
+
+  const closeBot = () => {
+    tg.close()
+  }
   return (
     <>
       <ScriptsBlock />
+      <button onClick={closeBot}>close</button>
       <h1>ГОТОВО</h1>
     </>
   );
