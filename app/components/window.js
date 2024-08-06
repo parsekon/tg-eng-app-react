@@ -3,17 +3,20 @@ const { useState, useEffect } = require("react")
 
 const Window = (props) => {
     const [set, setSet] = useState("Проверка");
+    const [tg, setTg] = useState({});
 
     useEffect(() => {
         if(typeof window !== undefined) {
             setSet("ready");
+            setTg(window?.Telegram?.WebApp);
+
         } else {
             setSet("not ready");
         }
     }, [])
 
     return (<>
-        <h1>{set}</h1>
+        <h1>{set} {tg.initDataUnsafe?.user.username}</h1>
     </>)
 }
 

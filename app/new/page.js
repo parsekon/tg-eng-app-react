@@ -1,17 +1,13 @@
 
 "use client"
-import { useTelegram } from "../hook/useTelegram";
+
+import Window from "../components/window"
 
 const New = () => {
-    const {user, tg } = useTelegram();
-
-    useEffect(() => {
-      tg.ready();
-    }, []);
 
     return (
         <>
-            <h1>{user?.username}</h1>
+            <Window />
         </>
     )
 }
